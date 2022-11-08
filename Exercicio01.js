@@ -6,52 +6,57 @@ e “D” - despesa), uma receita deve ser somada ao saldo e uma despesa subtra�
 do saldo, seu código deve impedir uma despesa maior que o saldo disponível e no
 final exibir o saldo atual desse projeto. */
 
-let nome = ""
-let orcamento = 0
+let nome = []
+let orcamento = []
+let index = 0
 let saldo = 0
-let continuar = true
-let opcao = ""
 let despesa = ""
+let opcao = ""
 
+
+let continuar = true
 while(continuar){
+    
     opcao = prompt("Insira uma opção: 1 - Criar Projeto, 2 - Acessar receita, 3 - Finalizar programa")
 
-    if(opcao = "1"){
-        CriarProjeto()
-    } else if(opcao == "2"){
-        Receita(nome, orcamento, saldo)
-        console.log("Receita atualizada com sucesso!")
-    } else if(opcao == "3"){
-        console.log("programa finalizado!")
-        continuar = false
-    } else {
-        console.log("Opção incorreta ou inexistente, digite novamente")
-    }
+    switch(opcao){
+        case "1":
+            CriarProjeto()
+            break
+        case "2":
+            let nomeProjeto = prompt("Insira o nome do projeto que deseja atualizar")
+            let valor = parseInt(prompt("Insira o valor que deseja atualizar"))
+            let despesa = prompt("Insirao o tipo de despesa r ou d")
+            Receita(nomeProjeto, valor, despesa)
+            console.log("Receita atualizada com sucesso!")
+            break
+        case "3":
+            continuar = false
+            console.log("programa finalizado!")
+            break
+        default:
+            console.log("Opção incorreta ou inexistente, digite novamente")
+    }     
 }
 
 
 function CriarProjeto() {
-    nome = prompt("Insira o nome do projeto: ")
-    orcamento = parseFloat(prompt("Insira o orçamento total para o projeto:"))
+    nome.push(prompt("Insira o nome do projeto: "))
+    orcamento.push(parseFloat(prompt("Insira o orçamento total para o projeto:")))
     console.log("Nome do projeto: " + nome + " Orçamento para o projeto: " + orcamento)
     console.log("Projeto Cadastrado com sucesso")
 }
 
 function Receita(nome, valor, despesa) {
-    despesa = prompt("Insira o tipo de Despesa: r: Receita, d: Despesa")
+    let index = nome.indexOf(nome)
 
     if(despesa == "r"){
-        saldo = parseFloat("Insira o valor que deseja adicionar ao orçamento: ")
-        orcamento = orcamento + saldo
-    } else if (despesa == "d"){
-        saldo = parseFloat("Insira o valor que deseja adicionar como despesa ao orçamento: ")
-        if(saldo > orcamento){
-            console.log("Despesa maior que o saldo do projeto!")
-        } else{
-            orçamento = orcamento - saldo 
-        }
+        orcamento[index] = orcamento[index] + saldo
+    } else if (valor <= orcamento[index]){
+        orcamento[index] = orcamento[index] - valor 
     }
 
-    saldo = 0
+    
+    console.log(orcamento[index])
     
 }

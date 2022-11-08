@@ -4,20 +4,26 @@ perfeito quando ele é igual a soma dos seus divisores. Ex.: 6 é perfeito, 6 = 
 
 let num = parseInt(prompt("Insira um número a ser verificado"))
 let soma = 0
+let divisores = []
 
-NumeroPerfeito()
 
 function NumeroPerfeito() {
     for (let index = 1; index < num; index++) {
         if(num % index == 0){
-            soma = soma + index
+            divisores.push(index)
         }
     }
 
+    divisores.forEach(x => {
+        soma = soma + x
+        console.log(soma)
+    })
+
     if(soma == num){
-        console.log("O número " + num + " é um número perfeito!")
+        return true
     } else {
-        console.log("o número " + num + " não é um número perfeito!")
         return false
     }
 }
+
+console.log(NumeroPerfeito())
