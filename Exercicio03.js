@@ -48,26 +48,39 @@ function CadastroPopulacao(){
 
 function mediaSalario() {
     let mediasalariosup = 0
-    for (let index = 0; index < indexCadastro; index++) {
+    salario.forEach(salario => mediasalariosup = salario + mediasalariosup)
+    /*for (let index = 0; index < indexCadastro; index++) {
         somaSalario = somaSalario + salario[index]
-    }
+    }*/
     mediasalariosup = somaSalario / indexCadastro
     console.log("A média de salário da população: " + mediasalariosup)
 }
 
 function mediaFilhos() {
-    for (let index = 0; index < indexCadastro; index++) {
+    let mediaFilhosSup = 0
+    numFilhos.forEach(x => somaFilhos = x + somaFilhos)
+
+    /*for (let index = 0; index < indexCadastro; index++) {
         somaFilhos = somaFilhos + numFilhos[index]
-    }
-    console.log("A média de filhos da população: " + (somaFilhos / indexCadastro))
+    }*/
+    mediaFilhosSup = somaFilhos / indexCadastro
+
+    console.log("A média de filhos da população: " + mediaFilhosSup)
 }
 
 function maiorSalario() {
-    for (let index = 0; index < indexCadastro; index++) {
+
+    salario.forEach(x => {
+        if(x > maiorSalario){
+            maiorSalario = x
+        }
+    })
+
+    /* for (let index = 0; index < indexCadastro; index++) {
         if(salario[index] > maiorsalario){
             maiorsalario = salario[index]
         }
-    }
+    }*/
     console.log("O maior salário é: " + maiorsalario)
 }
 
